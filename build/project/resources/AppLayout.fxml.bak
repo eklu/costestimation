@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="434.0" prefWidth="605.0" xmlns:fx="http://javafx.com/fxml" fx:controller="app.Controller">
+  <children>
+    <TabPane prefHeight="434.0" prefWidth="605.0" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+        <Tab fx:id="fTab" closable="false" text="Foundation">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="235.0">
+              <children>
+                <Label layoutX="14.0" layoutY="14.0" text="Input">
+                  <font>
+                    <Font name="System Bold" size="14.0" fx:id="x1" />
+                  </font>
+                </Label>
+                <Label layoutX="14.0" layoutY="42.0" text="Base (mm)">
+                  <labelFor>
+                    <TextField fx:id="fBase" layoutX="150.0" layoutY="42.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <Label layoutX="14.0" layoutY="77.0" text="Depth(mm)">
+                  <labelFor>
+                    <TextField fx:id="fDepth" layoutX="150.0" layoutY="74.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <Label layoutX="14.0" layoutY="112.0" text="Reinforcement">
+                  <font>
+                    <Font name="System Italic" size="12.0" fx:id="x5" />
+                  </font>
+                </Label>
+                <Label layoutX="14.0" layoutY="138.0" text="‎Ø (mm)">
+                  <labelFor>
+                    <ChoiceBox fx:id="fSize" layoutX="151.0" layoutY="138.0">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item 1" />
+                          <String fx:value="Item 2" />
+                          <String fx:value="Item 3" />
+                        </FXCollections>
+                      </items>
+                    </ChoiceBox>
+                  </labelFor>
+                </Label>
+                <Label layoutX="14.0" layoutY="169.0" text="Spacing (mm)">
+                  <labelFor>
+                    <TextField fx:id="fSpacing" layoutX="150.0" layoutY="167.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <Label layoutX="14.0" layoutY="201.0" text="Length of Bar (mm)">
+                  <labelFor>
+                    <TextField fx:id="fLengthOfBar" layoutX="150.0" layoutY="199.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <Separator layoutX="274.0" layoutY="38.0" orientation="VERTICAL" prefHeight="200.0" />
+                <Label font="$x1" layoutX="291.0" layoutY="14.0" text="Cost (Birr)" />
+                <Label layoutX="291.0" layoutY="42.0" text="Concrete Volume">
+                  <font>
+                    <Font size="16.0" fx:id="x2" />
+                  </font>
+                  <labelFor>
+                    <Label id="fVol" fx:id="fVolCost" layoutX="291.0" layoutY="62.0" text="0" textFill="#003d99">
+                      <font>
+                        <Font name="System Bold" size="18.0" fx:id="x3" />
+                      </font>
+                    </Label>
+                  </labelFor>
+                </Label>
+                <Label font="$x2" layoutX="291.0" layoutY="106.0" text="Reinforcement">
+                  <labelFor>
+                    <Label id="fRe" fx:id="fReCost" font="$x3" layoutX="291.0" layoutY="125.0" text="0">
+                      <textFill>
+                        <Color blue="0.600" green="0.239" red="0.000" fx:id="x4" />
+                      </textFill>
+                    </Label>
+                  </labelFor>
+                </Label>
+                <Label font="$x2" layoutX="291.0" layoutY="174.0" text="Formwork">
+                  <labelFor>
+                    <Label fx:id="fFormCost" font="$x3" layoutX="291.0" layoutY="194.0" text="0" textFill="$x4" />
+                  </labelFor>
+                </Label>
+                <Label layoutX="18.0" layoutY="306.0" text="Total Foundation Cost (Birr)">
+                  <font>
+                    <Font name="System Bold" size="16.0" fx:id="x6" />
+                  </font>
+                  <labelFor>
+                    <Label fx:id="fTotalCost" layoutX="18.0" layoutY="336.0" text="0" textFill="#009918">
+                      <font>
+                        <Font name="System Bold" size="25.0" fx:id="x8" />
+                      </font>
+                    </Label>
+                  </labelFor>
+                </Label>
+                <fx:reference source="fBase" />
+                <fx:reference source="fDepth" />
+                <fx:reference source="fSpacing" />
+                <fx:reference source="fLengthOfBar" />
+                <fx:reference source="fSize" />
+                <Button fx:id="fCalcButton" defaultButton="true" layoutX="292.0" layoutY="328.0" mnemonicParsing="false" onAction="#calcFoundation" prefHeight="49.0" prefWidth="132.0" text="Calculate" />
+                <fx:reference source="fVolCost" />
+                <fx:reference source="fReCost" />
+                <fx:reference source="fFormCost" />
+                <fx:reference source="fTotalCost" />
+                <ListView fx:id="fList" layoutX="461.0" layoutY="21.0" onMouseClicked="#fListSelect" prefHeight="356.0" prefWidth="127.0" />
+                <Separator layoutX="441.0" layoutY="38.0" orientation="VERTICAL" prefHeight="200.00009999999747" />
+                <Label font="$x1" layoutX="14.0" layoutY="243.0" text="Quantity">
+                  <labelFor>
+                    <TextField id="fLengthOfBar" fx:id="fQuantity" layoutX="150.0" layoutY="241.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="fQuantity" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab fx:id="cTab" closable="false" text="Columns">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="235.0">
+              <children>
+                <Label font="$x1" layoutX="14.0" layoutY="14.0" text="Input" />
+                <Label layoutX="14.0" layoutY="42.0" text="Height (mm)">
+                  <labelFor>
+                    <TextField fx:id="cHeight" layoutX="150.0" layoutY="42.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <Label font="$x5" layoutX="14.0" layoutY="72.0" text="Reinforcement" />
+                <Label layoutX="14.0" layoutY="129.0" text="‎Ø (mm)">
+                  <labelFor>
+                    <ChoiceBox fx:id="cSize" layoutX="151.0" layoutY="129.0">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item 1" />
+                          <String fx:value="Item 2" />
+                          <String fx:value="Item 3" />
+                        </FXCollections>
+                      </items>
+                    </ChoiceBox>
+                  </labelFor>
+                </Label>
+                <Label layoutX="14.0" layoutY="102.0" text="Number of Bars">
+                  <labelFor>
+                    <TextField fx:id="cNumOfBars" layoutX="150.0" layoutY="100.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <Separator layoutX="274.0" layoutY="38.0" orientation="VERTICAL" prefHeight="216.0" />
+                <Label font="$x1" layoutX="291.0" layoutY="14.0" text="Cost (Birr)" />
+                <Label font="$x2" layoutX="291.0" layoutY="42.0" text="Concrete Volume">
+                  <labelFor>
+                    <Label id="fVol" fx:id="cVolCost" font="$x3" layoutX="291.0" layoutY="62.0" text="0" textFill="$x4" />
+                  </labelFor>
+                </Label>
+                <Label font="$x2" layoutX="291.0" layoutY="106.0" text="Reinforcement">
+                  <labelFor>
+                    <Label fx:id="cReCost" font="$x3" layoutX="291.0" layoutY="125.0" text="0" textFill="$x4" />
+                  </labelFor>
+                </Label>
+                <Label font="$x2" layoutX="291.0" layoutY="174.0" text="Formwork">
+                  <labelFor>
+                    <Label fx:id="cFormCost" font="$x3" layoutX="291.0" layoutY="194.0" text="0" textFill="$x4" />
+                  </labelFor>
+                </Label>
+                <Label font="$x6" layoutX="18.0" layoutY="306.0" text="Total Columns Cost (Birr)">
+                  <labelFor>
+                    <Label fx:id="cTotalCost" font="$x8" layoutX="18.0" layoutY="336.0" text="0">
+                      <textFill>
+                        <Color blue="0.094" green="0.600" red="0.000" fx:id="x9" />
+                      </textFill>
+                    </Label>
+                  </labelFor>
+                </Label>
+                <fx:reference source="cHeight" />
+                <fx:reference source="cNumOfBars" />
+                <fx:reference source="cSize" />
+                <Button fx:id="cCalcButton" defaultButton="true" layoutX="292.0" layoutY="328.0" mnemonicParsing="false" onAction="#calcColumns" prefHeight="49.0" prefWidth="132.0" text="Calculate" />
+                <fx:reference source="cVolCost" />
+                <fx:reference source="cReCost" />
+                <fx:reference source="cFormCost" />
+                <fx:reference source="cTotalCost" />
+                <RadioButton fx:id="cCirc" layoutX="13.0" layoutY="188.0" mnemonicParsing="false" onAction="#selectCircular" selected="true" text="Circular">
+                  <toggleGroup>
+                    <ToggleGroup fx:id="cColType" />
+                  </toggleGroup>
+                </RadioButton>
+                <Label font="$x5" layoutX="14.0" layoutY="162.0" text="Type of Column" />
+                <RadioButton fx:id="cRect" layoutX="113.0" layoutY="188.0" mnemonicParsing="false" onAction="#selectRectangular" text="Rectangular" toggleGroup="$cColType" />
+                <Label id="cDiameteLabel" fx:id="cDiameterLabel" layoutX="16.0" layoutY="220.0" text="Diameter (mm)">
+                  <labelFor>
+                    <TextField fx:id="cDiameter" layoutX="152.0" layoutY="218.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="cDiameter" />
+                <Label fx:id="cWidthLabel" layoutX="16.0" layoutY="214.0" text="Width - x (mm)" visible="false">
+                  <labelFor>
+                    <TextField fx:id="cWidth" layoutX="151.0" layoutY="212.0" prefWidth="75.0" promptText="0" visible="false" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="cWidth" />
+                <Label fx:id="cLengthLabel" layoutX="17.0" layoutY="241.0" text="Length - y (mm)" visible="false">
+                  <labelFor>
+                    <TextField fx:id="cLength" layoutX="151.0" layoutY="240.0" prefWidth="75.0" promptText="0" visible="false" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="cLength" />
+                <ListView fx:id="cList" layoutX="462.0" layoutY="24.0" onMouseClicked="#cListSelect" prefHeight="353.0" prefWidth="127.0" />
+                <Separator layoutX="442.0" layoutY="41.0" orientation="VERTICAL" prefHeight="200.00009999999747" />
+                <Label font="$x1" layoutX="16.0" layoutY="262.0" text="Quantity">
+                  <labelFor>
+                    <TextField id="fLengthOfBar" fx:id="cQuantity" layoutX="152.0" layoutY="260.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="cQuantity" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab fx:id="bTab" closable="false" text="Beams">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="235.0">
+              <children>
+                <Label font="$x1" layoutX="14.0" layoutY="14.0" text="Input" />
+                <Label layoutX="14.0" layoutY="42.0" text="X (mm)">
+                  <labelFor>
+                    <TextField fx:id="bX" layoutX="148.0" layoutY="42.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <Label layoutX="14.0" layoutY="71.0" text="Y (mm)">
+                  <labelFor>
+                    <TextField fx:id="bY" layoutX="148.0" layoutY="68.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <Label font="$x5" layoutX="14.0" layoutY="139.0" text="Reinforcement" />
+                <Label layoutX="14.0" layoutY="170.0" text="‎Ø (mm)" />
+                <Label layoutX="14.0" layoutY="202.0" text="Length (mm)" />
+                <Label layoutX="14.0" layoutY="236.0" text="Num. of Bars" />
+                <Separator layoutX="274.0" layoutY="38.0" orientation="VERTICAL" prefHeight="220.0" />
+                <Label font="$x1" layoutX="291.0" layoutY="14.0" text="Cost (Birr)" />
+                <Label font="$x2" layoutX="291.0" layoutY="42.0" text="Concrete Volume">
+                  <labelFor>
+                    <Label id="fVol" fx:id="bVolCost" font="$x3" layoutX="291.0" layoutY="62.0" text="0" textFill="$x4" />
+                  </labelFor>
+                </Label>
+                <Label font="$x2" layoutX="291.0" layoutY="106.0" text="Reinforcement">
+                  <labelFor>
+                    <Label fx:id="bReCost" font="$x3" layoutX="291.0" layoutY="125.0" text="0" textFill="$x4" />
+                  </labelFor>
+                </Label>
+                <Label font="$x2" layoutX="291.0" layoutY="174.0" text="Formwork">
+                  <labelFor>
+                    <Label fx:id="bFormCost" font="$x3" layoutX="291.0" layoutY="194.0" text="0" textFill="$x4" />
+                  </labelFor>
+                </Label>
+                <Label font="$x6" layoutX="18.0" layoutY="306.0" text="Total Beams Cost (Birr)">
+                  <labelFor>
+                    <Label fx:id="bTotalCost" font="$x8" layoutX="18.0" layoutY="336.0" text="0" textFill="$x9" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="bX" />
+                <fx:reference source="bY" />
+                <TextField fx:id="bTopLength" layoutX="91.0" layoutY="200.0" prefWidth="50.0" promptText="0" />
+                <ChoiceBox fx:id="bTopSize" layoutX="91.0" layoutY="170.0" prefWidth="50.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Item 1" />
+                      <String fx:value="Item 2" />
+                      <String fx:value="Item 3" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+                <Button fx:id="bCalcButton" defaultButton="true" layoutX="292.0" layoutY="328.0" mnemonicParsing="false" onAction="#calcBeams" prefHeight="49.0" prefWidth="132.0" text="Calculate" />
+                <fx:reference source="bVolCost" />
+                <fx:reference source="bReCost" />
+                <fx:reference source="bFormCost" />
+                <fx:reference source="bTotalCost" />
+                <Label layoutX="14.0" layoutY="97.0" text="Length (mm)">
+                  <labelFor>
+                    <TextField fx:id="bLength" layoutX="148.0" layoutY="94.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="bLength" />
+                <ChoiceBox fx:id="bTopSupportSize" layoutX="151.0" layoutY="170.0" prefWidth="50.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Item 1" />
+                      <String fx:value="Item 2" />
+                      <String fx:value="Item 3" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+                <ChoiceBox fx:id="bBottomSize" layoutX="210.0" layoutY="170.0" prefWidth="50.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Item 1" />
+                      <String fx:value="Item 2" />
+                      <String fx:value="Item 3" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+                <TextField fx:id="bTopSupportLength" layoutX="151.0" layoutY="200.0" prefWidth="50.0" promptText="0" />
+                <TextField fx:id="bBottomLength" layoutX="210.0" layoutY="200.0" prefWidth="50.0" promptText="0" />
+                <TextField fx:id="bTopNumOfBars" layoutX="91.0" layoutY="233.0" prefWidth="50.0" promptText="0" />
+                <TextField fx:id="bTopSupportNumOfBars" layoutX="151.0" layoutY="233.0" prefWidth="50.0" promptText="0" />
+                <TextField fx:id="bBottomNumOfBars" layoutX="210.0" layoutY="233.0" prefWidth="50.0" promptText="0" />
+                <Label font="$x5" layoutX="119.0" layoutY="139.0" text="Top" />
+                <Label font="$x5" layoutX="151.0" layoutY="122.0" prefHeight="49.0" prefWidth="50.0" text="Top Support" textAlignment="RIGHT" textOverrun="WORD_ELLIPSIS" wrapText="true" />
+                <Label font="$x5" layoutX="221.0" layoutY="142.0" text="Bottom" />
+                <ListView fx:id="bList" layoutX="462.0" layoutY="22.0" onMouseClicked="#bListSelect" prefHeight="355.0" prefWidth="127.0" />
+                <Separator layoutX="442.0" layoutY="39.0" orientation="VERTICAL" prefHeight="200.00009999999747" />
+                <Label font="$x1" layoutX="14.0" layoutY="272.0" text="Quantity">
+                  <labelFor>
+                    <TextField id="fLengthOfBar" fx:id="bQuantity" layoutX="150.0" layoutY="270.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="bQuantity" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab fx:id="sTab" closable="false" text="Slabs">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="235.0">
+              <children>
+                <Label font="$x1" layoutX="14.0" layoutY="14.0" text="Input" />
+                <Label layoutX="14.0" layoutY="42.0" text="Width - X (mm)">
+                  <labelFor>
+                    <TextField fx:id="sX" layoutX="150.0" layoutY="42.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <Label layoutX="14.0" layoutY="77.0" text="Length - Y (mm)">
+                  <labelFor>
+                    <TextField fx:id="sY" layoutX="150.0" layoutY="74.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <Label font="$x5" layoutX="14.0" layoutY="142.0" text="Reinforcement" />
+                <Label layoutX="14.0" layoutY="173.0" text="‎Ø (mm)" />
+                <Label layoutX="14.0" layoutY="204.0" text="Spacing (mm)" />
+                <Label layoutX="14.0" layoutY="236.0" text="Length of Bar (mm)" />
+                <Separator layoutX="274.0" layoutY="38.0" orientation="VERTICAL" prefHeight="215.0" />
+                <Label font="$x1" layoutX="291.0" layoutY="14.0" text="Cost (Birr)" />
+                <Label font="$x2" layoutX="291.0" layoutY="42.0" text="Concrete Volume">
+                  <labelFor>
+                    <Label id="fVol" fx:id="sVolCost" font="$x3" layoutX="291.0" layoutY="62.0" text="0" textFill="$x4" />
+                  </labelFor>
+                </Label>
+                <Label font="$x2" layoutX="291.0" layoutY="106.0" text="Reinforcement">
+                  <labelFor>
+                    <Label fx:id="sReCost" font="$x3" layoutX="291.0" layoutY="125.0" text="0" textFill="$x4" />
+                  </labelFor>
+                </Label>
+                <Label font="$x2" layoutX="291.0" layoutY="174.0" text="Formwork">
+                  <labelFor>
+                    <Label fx:id="sFormCost" font="$x3" layoutX="291.0" layoutY="194.0" text="0" textFill="$x4" />
+                  </labelFor>
+                </Label>
+                <Label font="$x6" layoutX="18.0" layoutY="306.0" text="Total Slabs Cost (Birr)">
+                  <labelFor>
+                    <Label fx:id="sTotalCost" font="$x8" layoutX="18.0" layoutY="336.0" text="0" textFill="$x9" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="sX" />
+                <fx:reference source="sY" />
+                <Button fx:id="sCalcButton" defaultButton="true" layoutX="292.0" layoutY="328.0" mnemonicParsing="false" onAction="#calcSlabs" prefHeight="49.0" prefWidth="132.0" text="Calculate" />
+                <fx:reference source="sVolCost" />
+                <fx:reference source="sReCost" />
+                <fx:reference source="sFormCost" />
+                <fx:reference source="sTotalCost" />
+                <Label layoutX="14.0" layoutY="109.0" text="Thickness (mm)">
+                  <labelFor>
+                    <TextField id="sLength" fx:id="sThick" layoutX="150.0" layoutY="106.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="sThick" />
+                <ChoiceBox id="bBottomSize" fx:id="sXSize" layoutX="148.0" layoutY="171.0" prefWidth="50.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Item 1" />
+                      <String fx:value="Item 2" />
+                      <String fx:value="Item 3" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+                <TextField id="bBottomLength" fx:id="sXSpacing" layoutX="148.0" layoutY="201.0" prefWidth="50.0" promptText="0" />
+                <TextField id="bBottomNumOfBars" fx:id="sXLengthOfBar" layoutX="148.0" layoutY="234.0" prefWidth="50.0" promptText="0" />
+                <Label font="$x5" layoutX="162.0" layoutY="143.0" text="X" />
+                <ChoiceBox id="bBottomSize" fx:id="sYSize" layoutX="213.0" layoutY="171.0" prefWidth="50.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Item 1" />
+                      <String fx:value="Item 2" />
+                      <String fx:value="Item 3" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+                <TextField id="bBottomLength" fx:id="sYSpacing" layoutX="213.0" layoutY="201.0" prefWidth="50.0" promptText="0" />
+                <TextField id="bBottomNumOfBars" fx:id="sYLengthOfBar" layoutX="213.0" layoutY="234.0" prefWidth="50.0" promptText="0" />
+                <Label font="$x5" layoutX="227.0" layoutY="143.0" text="Y" />
+                <ListView fx:id="sList" layoutX="462.0" layoutY="24.0" onMouseClicked="#sListSelect" prefHeight="353.0" prefWidth="127.0" />
+                <Separator layoutX="442.0" layoutY="41.0" orientation="VERTICAL" prefHeight="200.00009999999747" />
+                <Label font="$x1" layoutX="14.0" layoutY="275.0" text="Quantity">
+                  <labelFor>
+                    <TextField id="fLengthOfBar" fx:id="sQuantity" layoutX="150.0" layoutY="273.0" prefWidth="75.0" promptText="0" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="sQuantity" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab fx:id="sumTab" text="Summary">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Label id="sumFCost" font="$x6" layoutX="30.0" layoutY="56.0" text="Foundation Cost (Birr)">
+                  <labelFor>
+                    <Label fx:id="sumFCost" font="$x8" layoutX="30.0" layoutY="76.0" text="0" textFill="$x9" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="sumFCost" />
+                <Label font="$x6" layoutX="30.0" layoutY="116.0" text="Columns Cost (Birr)">
+                  <labelFor>
+                    <Label fx:id="sumCCost" font="$x8" layoutX="30.0" layoutY="136.0" text="0" textFill="$x9" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="sumCCost" />
+                <Label font="$x6" layoutX="30.0" layoutY="180.0" text="Beams Cost (Birr)">
+                  <labelFor>
+                    <Label fx:id="sumBCost" font="$x8" layoutX="30.0" layoutY="200.0" text="0" textFill="$x9" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="sumBCost" />
+                <Label font="$x6" layoutX="30.0" layoutY="243.0" text="Slabs Cost (Birr)">
+                  <labelFor>
+                    <Label fx:id="sumSCost" font="$x8" layoutX="30.0" layoutY="263.0" text="0" textFill="$x9" />
+                  </labelFor>
+                </Label>
+                <fx:reference source="sumSCost" />
+                <Label font="$x6" layoutX="301.0" layoutY="126.0" text="TOTAL COST (Birr)">
+                  <labelFor>
+                    <Label fx:id="sumTotalCost" layoutX="301.0" layoutY="146.0" text="0" textFill="#33b6ff">
+                      <font>
+                        <Font name="System Bold" size="35.0" />
+                      </font>
+                    </Label>
+                  </labelFor>
+                </Label>
+                <fx:reference source="sumTotalCost" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+      </tabs>
+    </TabPane>
+  </children>
+</AnchorPane>
