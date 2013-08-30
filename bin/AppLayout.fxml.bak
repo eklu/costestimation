@@ -4,6 +4,7 @@
 <?import java.util.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
@@ -109,7 +110,7 @@
                 <fx:reference source="fReCost" />
                 <fx:reference source="fFormCost" />
                 <fx:reference source="fTotalCost" />
-                <ListView fx:id="fList" layoutX="461.0" layoutY="21.0" onMouseClicked="#fListSelect" prefHeight="356.0" prefWidth="127.0" />
+                <ListView fx:id="fList" layoutX="461.0" layoutY="21.0" prefHeight="356.0" prefWidth="127.0" />
                 <Separator layoutX="441.0" layoutY="38.0" orientation="VERTICAL" prefHeight="200.00009999999747" />
                 <Label font="$x1" layoutX="14.0" layoutY="243.0" text="Quantity">
                   <labelFor>
@@ -117,6 +118,16 @@
                   </labelFor>
                 </Label>
                 <fx:reference source="fQuantity" />
+                <Button fx:id="fDelBtn" layoutX="291.0" layoutY="283.0" mnemonicParsing="false" onAction="#delF" prefHeight="34.0" prefWidth="61.0" text="Delete">
+                  <effect>
+                    <ColorAdjust hue="0.07633587786259532" saturation="1.0" />
+                  </effect>
+                </Button>
+                <Button fx:id="fNewBtn" layoutX="363.0" layoutY="283.0" mnemonicParsing="false" onAction="#newF" prefHeight="34.0" prefWidth="61.0" text="New">
+                  <effect>
+                    <ColorAdjust hue="0.30534351145038174" saturation="1.0" />
+                  </effect>
+                </Button>
               </children>
             </AnchorPane>
           </content>
@@ -209,7 +220,7 @@
                   </labelFor>
                 </Label>
                 <fx:reference source="cLength" />
-                <ListView fx:id="cList" layoutX="462.0" layoutY="24.0" onMouseClicked="#cListSelect" prefHeight="353.0" prefWidth="127.0" />
+                <ListView fx:id="cList" layoutX="462.0" layoutY="24.0" prefHeight="353.0" prefWidth="127.0" />
                 <Separator layoutX="442.0" layoutY="41.0" orientation="VERTICAL" prefHeight="200.00009999999747" />
                 <Label font="$x1" layoutX="16.0" layoutY="262.0" text="Quantity">
                   <labelFor>
@@ -217,6 +228,16 @@
                   </labelFor>
                 </Label>
                 <fx:reference source="cQuantity" />
+                <Button fx:id="cDelBtn" layoutX="292.0" layoutY="281.0" mnemonicParsing="false" onAction="#delC" prefHeight="34.0" prefWidth="61.0" text="Delete">
+                  <effect>
+                    <ColorAdjust hue="0.07633587786259532" saturation="1.0" />
+                  </effect>
+                </Button>
+                <Button fx:id="cNewBtn" layoutX="364.0" layoutY="281.0" mnemonicParsing="false" onAction="#newC" prefHeight="34.0" prefWidth="61.0" text="New">
+                  <effect>
+                    <ColorAdjust hue="0.30534351145038174" saturation="1.0" />
+                  </effect>
+                </Button>
               </children>
             </AnchorPane>
           </content>
@@ -311,7 +332,7 @@
                 <Label font="$x5" layoutX="119.0" layoutY="139.0" text="Top" />
                 <Label font="$x5" layoutX="151.0" layoutY="122.0" prefHeight="49.0" prefWidth="50.0" text="Top Support" textAlignment="RIGHT" textOverrun="WORD_ELLIPSIS" wrapText="true" />
                 <Label font="$x5" layoutX="221.0" layoutY="142.0" text="Bottom" />
-                <ListView fx:id="bList" layoutX="462.0" layoutY="22.0" onMouseClicked="#bListSelect" prefHeight="355.0" prefWidth="127.0" />
+                <ListView fx:id="bList" layoutX="462.0" layoutY="22.0" prefHeight="355.0" prefWidth="127.0" />
                 <Separator layoutX="442.0" layoutY="39.0" orientation="VERTICAL" prefHeight="200.00009999999747" />
                 <Label font="$x1" layoutX="14.0" layoutY="272.0" text="Quantity">
                   <labelFor>
@@ -319,6 +340,16 @@
                   </labelFor>
                 </Label>
                 <fx:reference source="bQuantity" />
+                <Button id="sDelBtn" fx:id="bDelBtn" layoutX="293.0" layoutY="283.0" mnemonicParsing="false" onAction="#delB" prefHeight="34.0" prefWidth="61.0" text="Delete">
+                  <effect>
+                    <ColorAdjust hue="0.07633587786259532" saturation="1.0" />
+                  </effect>
+                </Button>
+                <Button fx:id="bNewBtn" layoutX="365.0" layoutY="283.0" mnemonicParsing="false" onAction="#newB" prefHeight="34.0" prefWidth="61.0" text="New">
+                  <effect>
+                    <ColorAdjust hue="0.30534351145038174" saturation="1.0" />
+                  </effect>
+                </Button>
               </children>
             </AnchorPane>
           </content>
@@ -401,7 +432,7 @@
                 <TextField id="bBottomLength" fx:id="sYSpacing" layoutX="213.0" layoutY="201.0" prefWidth="50.0" promptText="0" />
                 <TextField id="bBottomNumOfBars" fx:id="sYLengthOfBar" layoutX="213.0" layoutY="234.0" prefWidth="50.0" promptText="0" />
                 <Label font="$x5" layoutX="227.0" layoutY="143.0" text="Y" />
-                <ListView fx:id="sList" layoutX="462.0" layoutY="24.0" onMouseClicked="#sListSelect" prefHeight="353.0" prefWidth="127.0" />
+                <ListView fx:id="sList" layoutX="462.0" layoutY="24.0" prefHeight="353.0" prefWidth="127.0" />
                 <Separator layoutX="442.0" layoutY="41.0" orientation="VERTICAL" prefHeight="200.00009999999747" />
                 <Label font="$x1" layoutX="14.0" layoutY="275.0" text="Quantity">
                   <labelFor>
@@ -409,6 +440,16 @@
                   </labelFor>
                 </Label>
                 <fx:reference source="sQuantity" />
+                <Button fx:id="sDelBtn" layoutX="292.0" layoutY="280.0" mnemonicParsing="false" onAction="#delS" prefHeight="34.0" prefWidth="61.0" text="Delete">
+                  <effect>
+                    <ColorAdjust hue="0.07633587786259532" saturation="1.0" />
+                  </effect>
+                </Button>
+                <Button fx:id="sNewBtn" layoutX="364.0" layoutY="280.0" mnemonicParsing="false" onAction="#newS" prefHeight="34.0" prefWidth="61.0" text="New">
+                  <effect>
+                    <ColorAdjust hue="0.30534351145038174" saturation="1.0" />
+                  </effect>
+                </Button>
               </children>
             </AnchorPane>
           </content>

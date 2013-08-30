@@ -123,6 +123,10 @@ public class Controller implements Initializable {
 	// button
 	@FXML
 	private Button fCalcButton;
+	@FXML
+	private Button fDelBtn;
+	@FXML
+	private Button fNewBtn;
 
 	// actions
 	@FXML
@@ -153,6 +157,18 @@ public class Controller implements Initializable {
 		resetF();
 	}
 
+	@FXML
+	private void delF(ActionEvent e){
+		DataUtil.foundations.remove(selectedFKey);
+		fOList.remove(selectedFKey);
+		resetF();
+	}
+	
+	@FXML
+	private void newF(ActionEvent e){
+		resetF();
+	}
+		
 	private void fListSelect(String selected) {
 		if (DataUtil.foundations.isEmpty())
 			return;
@@ -162,6 +178,9 @@ public class Controller implements Initializable {
 		
 		selectedFKey = selected;
 		Foundation f = DataUtil.foundations.get(selectedFKey);
+		
+		fNewBtn.setVisible(true);
+		fDelBtn.setVisible(true);
 
 		fVolCost.setText("" + f.getVolCost());
 		fReCost.setText("" + f.getReCost());
@@ -219,6 +238,10 @@ public class Controller implements Initializable {
 	// button
 	@FXML
 	private Button cCalcButton;
+	@FXML
+	private Button cDelBtn;
+	@FXML
+	private Button cNewBtn;
 
 	// labels
 	@FXML
@@ -232,7 +255,7 @@ public class Controller implements Initializable {
 	@FXML
 	private void calcColumns(ActionEvent e) {
 		if (cCalcButton.getText().equals("Re-Calculate")){
-			DataUtil.foundations.remove(selectedCKey);
+			DataUtil.columns.remove(selectedCKey);
 			cOList.remove(selectedCKey);
 		}
 		
@@ -262,6 +285,18 @@ public class Controller implements Initializable {
 	}
 
 	@FXML
+	private void delC(ActionEvent e){
+		DataUtil.columns.remove(selectedCKey);
+		cOList.remove(selectedCKey);
+		resetC();
+	}
+	
+	@FXML
+	private void newC(ActionEvent e){
+		resetC();
+	}
+
+	@FXML
 	private void selectCircular(ActionEvent e) {
 		cDiameter.setVisible(true);
 		cDiameterLabel.setVisible(true);
@@ -287,6 +322,9 @@ public class Controller implements Initializable {
 
 		selectedCKey = selected;
 		Column c = DataUtil.columns.get(selectedCKey);
+		
+		cNewBtn.setVisible(true);
+		cDelBtn.setVisible(true);
 
 		cVolCost.setText("" + c.getVolCost());
 		cReCost.setText("" + c.getReCost());
@@ -357,12 +395,16 @@ public class Controller implements Initializable {
 	// button
 	@FXML
 	private Button bCalcButton;
+	@FXML
+	private Button bDelBtn;
+	@FXML
+	private Button bNewBtn;
 
 	// actions
 	@FXML
 	private void calcBeams(ActionEvent e) {
 		if (bCalcButton.getText().equals("Re-Calculate")){
-			DataUtil.foundations.remove(selectedBKey);
+			DataUtil.beams.remove(selectedBKey);
 			bOList.remove(selectedBKey);
 		}
 		
@@ -394,12 +436,26 @@ public class Controller implements Initializable {
 		resetB();
 	}
 
+	@FXML
+	private void delB(ActionEvent e){
+		DataUtil.beams.remove(selectedBKey);
+		bOList.remove(selectedBKey);
+		resetB();
+	}
+	
+	@FXML
+	private void newB(ActionEvent e){
+		resetB();
+	}
+	
 	private void bListSelect(String selected) {
 		if (DataUtil.beams.isEmpty())
 			return;
 
 		selectedBKey = selected;
 		Beam b = DataUtil.beams.get(selectedBKey);
+		bNewBtn.setVisible(true);
+		bDelBtn.setVisible(true);
 
 		bVolCost.setText("" + b.getVolCost());
 		bReCost.setText("" + b.getReCost());
@@ -464,12 +520,16 @@ public class Controller implements Initializable {
 	// button
 	@FXML
 	private Button sCalcButton;
+	@FXML
+	private Button sDelBtn;
+	@FXML
+	private Button sNewBtn;
 
 	// actions
 	@FXML
 	private void calcSlabs(ActionEvent e) {
 		if (sCalcButton.getText().equals("Re-Calculate")){
-			DataUtil.foundations.remove(selectedSKey);
+			DataUtil.slabs.remove(selectedSKey);
 			sOList.remove(selectedSKey);
 		}
 		
@@ -498,13 +558,26 @@ public class Controller implements Initializable {
 
 	}
 
+	@FXML
+	private void delS(ActionEvent e){
+		DataUtil.slabs.remove(selectedSKey);
+		sOList.remove(selectedSKey);
+		resetS();
+	}
+	
+	@FXML
+	private void newS(ActionEvent e){
+		resetS();
+	}
 	private void sListSelect(String selected) {
 		if (DataUtil.slabs.isEmpty())
 			return;
 
 		selectedSKey = selected;
 		Slab s = DataUtil.slabs.get(selectedSKey);
-
+		sNewBtn.setVisible(true);
+		sDelBtn.setVisible(true);
+		
 		sVolCost.setText("" + s.getVolCost());
 		sReCost.setText("" + s.getReCost());
 		sFormCost.setText("" + s.getFormCost());
@@ -561,6 +634,9 @@ public class Controller implements Initializable {
 
 		fCalcButton.setText("Calculate");
 		fCalcButton.setEffect(new ColorAdjust(0, 0, 0, 0));
+		
+		fNewBtn.setVisible(false);
+		fDelBtn.setVisible(false);
 
 	}
 
@@ -582,6 +658,9 @@ public class Controller implements Initializable {
 
 		cCalcButton.setText("Calculate");
 		cCalcButton.setEffect(new ColorAdjust(0, 0, 0, 0));
+		
+		cNewBtn.setVisible(false);
+		cDelBtn.setVisible(false);
 	}
 
 	private void resetB() {
@@ -605,6 +684,9 @@ public class Controller implements Initializable {
 
 		bCalcButton.setText("Calculate");
 		bCalcButton.setEffect(new ColorAdjust(0, 0, 0, 0));
+		
+		bNewBtn.setVisible(false);
+		bDelBtn.setVisible(false);
 	}
 
 	private void resetS() {
@@ -625,6 +707,9 @@ public class Controller implements Initializable {
 
 		sCalcButton.setText("Calculate");
 		sCalcButton.setEffect(new ColorAdjust(0, 0, 0, 0));
+		
+		sNewBtn.setVisible(false);
+		sDelBtn.setVisible(false);
 	}
 
 }
